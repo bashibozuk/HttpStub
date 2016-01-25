@@ -9,8 +9,5 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
-    "autoload": {
-        "classmap": ["bashibozuk/httpstub"]
-    }
+    "require": {}
 }
