@@ -1,0 +1,1 @@
+Simple REST server with simple key value json document based storage
