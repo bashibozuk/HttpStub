@@ -121,6 +121,10 @@ class FileStorage extends AbsractStorage
 
     public function beforeCommand($name, $params = null)
     {
+        $storageDir = Settings::get(Settings::PATH);
+        if (!is_dir($storageDir) || !is_readable($storageDir) || !is_writable($storageDir)) {
+            throw new Exception(sprintf('Directory %s is not accessible', $storageDir));
+        }
         $attempts = 3;
 
         while(--$attempts) {
