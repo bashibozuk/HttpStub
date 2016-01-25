@@ -1,0 +1,16 @@
+{
+    "name": "bashibozuk/httpstub",
+    "description": "rest http stub server with document-like key value json based storage",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vasil Atanasov",
+            "email": "vsatanasov@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "classmap": ["bashibozuk/httpstub"]
+    }
+}

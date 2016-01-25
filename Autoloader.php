@@ -11,7 +11,7 @@ namespace HttpStub;
 
 class Autoloader
 {
-    const BASE_NAMESPACE_NAME = 'HttpStub';
+    const BASE_NAMESPACE_NAME = 'HttpStubOld';
 
     public static function load($className)
     {
