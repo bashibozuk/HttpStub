@@ -73,6 +73,9 @@ class FileStorage extends AbsractStorage
     {
 
         $keyFile = Settings::get(Settings::PATH) . '/' . $this->name . '/key.file';
+        if (!is_dir(Settings::get(Settings::PATH) . '/' . $this->name)) {
+            mkdir(Settings::get(Settings::PATH) . '/' . $this->name);
+        }
         $key = 1;
         if (!file_exists($keyFile)) {
             file_put_contents($keyFile, $key);
