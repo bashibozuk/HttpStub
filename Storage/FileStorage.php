@@ -12,6 +12,17 @@ use HttpStub\Exception;
  */
 class FileStorage extends AbsractStorage
 {
+    protected  function getPath()
+    {
+        $path = Settings::get(Settings::PATH) . '/' . $this->name;
+        if (!is_dir($path) ) {
+            @mkdir($path);
+        }
+
+        return $path;
+    }
+
+
     public function insert($value)
     {
         $key = $this->getNextKey();
@@ -28,7 +39,7 @@ class FileStorage extends AbsractStorage
 
     public function read($key)
     {
-        $file = Settings::get(Settings::PATH) . '/' . $this->name . '/' . $key .'.file';
+        $file = $this->getPath() . '/' . $key .'.file';
         if ($this->keyExists($key)) {
             return json_decode(file_get_contents($file), true);
         }
@@ -37,7 +48,7 @@ class FileStorage extends AbsractStorage
     public function delete($key)
     {
         if ($this->keyExists($key)) {
-            $file = Settings::get(Settings::PATH) . '/' . $this->name . '/' . $key .'.file';
+            $file = $this->getPath() . '/' . $key .'.file';
             unlink($file);
             return true;
         }
@@ -47,7 +58,7 @@ class FileStorage extends AbsractStorage
 
     public function truncate()
     {
-        $dir = Settings::get(Settings::PATH) . '/' . $this->name;
+        $dir = $this->getPath();
         foreach (scandir($dir) as $file) {
             if ($file !== '.' && $file !== '..') {
                 unlink($file);
@@ -57,11 +68,12 @@ class FileStorage extends AbsractStorage
 
     public function readAll()
     {
-        $dir = Settings::get(Settings::PATH) . '/' . $this->name;
+        $dir = $this->getPath();
         $result = [];
         foreach (scandir($dir) as $file) {
-            if ($file !== '.' && $file !== '..') {
-                $result[] = json_decode(file_get_contents($dir . DIRECTORY_SEPARATOR . $file), true);
+            if ($file !== '.' && $file !== '..' && $file != 'key.file') {
+                $key = basename($file, '.php');
+                $result[$key] = json_decode(file_get_contents($dir . DIRECTORY_SEPARATOR . $file), true);
             }
         }
 
@@ -72,10 +84,8 @@ class FileStorage extends AbsractStorage
     public function getNextKey()
     {
 
-        $keyFile = Settings::get(Settings::PATH) . '/' . $this->name . '/key.file';
-        if (!is_dir(Settings::get(Settings::PATH) . '/' . $this->name)) {
-            mkdir(Settings::get(Settings::PATH) . '/' . $this->name);
-        }
+        $keyFile = $this->getPath() . '/key.file';
+
         $key = 1;
         if (!file_exists($keyFile)) {
             file_put_contents($keyFile, $key);
@@ -90,20 +100,20 @@ class FileStorage extends AbsractStorage
 
     public function keyExists($key)
     {
-        $file = Settings::get(Settings::PATH) . '/' . $this->name . '/' . $key .'.file';
+        $file = $this->getPath() . '/' . $key .'.file';
         return file_exists($file);
     }
 
     public function isLocked()
     {
-        $lockFile = Settings::get(Settings::PATH) . '/' . $this->name . '/lock.file';
+        $lockFile = $this->getPath() . '/lock.file';
         return file_exists($lockFile);
     }
 
 
     protected function setKey($key, $value)
     {
-        $file = Settings::get(Settings::PATH) . '/' . $this->name . '/' . $key .'.file';
+        $file = $this->getPath() . '/' . $key .'.file';
         if (!is_dir(dirname($file))) {
             mkdir(dirname($file));
         }
@@ -112,13 +122,13 @@ class FileStorage extends AbsractStorage
 
     public function lock()
     {
-        $lockFile = Settings::get(Settings::PATH) . '/' . $this->name . '/lock.file';
+        $lockFile = $this->getPath() . '/lock.file';
         file_put_contents($lockFile, time());
     }
 
     public function unlock()
     {
-        $lockFile = Settings::get(Settings::PATH) . '/' . $this->name . '/lock.file';
+        $lockFile = $this->getPath() . '/lock.file';
         unlink($lockFile);
     }
 
