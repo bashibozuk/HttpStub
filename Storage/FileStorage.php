@@ -72,7 +72,7 @@ class FileStorage extends AbsractStorage
         $result = [];
         foreach (scandir($dir) as $file) {
             if ($file !== '.' && $file !== '..' && $file != 'key.file') {
-                $key = basename($file, '.php');
+                $key = basename($file, '.file');
                 $result[$key] = json_decode(file_get_contents($dir . DIRECTORY_SEPARATOR . $file), true);
             }
         }
@@ -100,6 +100,10 @@ class FileStorage extends AbsractStorage
 
     public function keyExists($key)
     {
+        if ($key == 'key') {
+            return;
+        }
+
         $file = $this->getPath() . '/' . $key .'.file';
         return file_exists($file);
     }
@@ -113,6 +117,7 @@ class FileStorage extends AbsractStorage
 
     protected function setKey($key, $value)
     {
+
         $file = $this->getPath() . '/' . $key .'.file';
         if (!is_dir(dirname($file))) {
             mkdir(dirname($file));
