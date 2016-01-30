@@ -20,10 +20,10 @@ class RequestHandler
 {
     protected static $config;
 
-    public static function init($config)
+    public static function init($config = [])
     {
-        static::$config['request_type'] = isset($config['request_type']) ? $config['request_type'] : Request::TYPE_HTTP;
-        static::$config['response_type'] = isset($config['response_type']) ? $config['response_type'] : null;
+        static::$config['request_type'] = isset($config['request_type']) ? $config['request_type'] : Request::TYPE_REST;
+        static::$config['response_type'] = isset($config['response_type']) ? $config['response_type'] : AbstractResponse::TYPE_JSON;
         static::$config['storage_class'] = isset($config['storage_class']) ? $config['storage_class'] : FileStorage::class;
     }
 
