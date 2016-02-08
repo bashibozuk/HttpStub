@@ -47,7 +47,7 @@ Basic HTTP  - For non REST applications,
     - GET and POST request methods are used
     
 
-Supported calls :
+    Supported calls :
            Method - GET
            URL - http://localhost/?route=test/readAll
            REQUEST BODY - NULL
