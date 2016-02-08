@@ -1,4 +1,4 @@
-#Simple REST/HTTP server with simple key value json document based storage
+###Simple REST/HTTP server with simple key value json document based storage
 
 ###Supports 2 types of requests
 ##REST
@@ -78,7 +78,7 @@
            EXECUTES - AbstractStorage::command('delete', [1]) 
            DESCRIPTION - deletes the entry at key 1 ,returns true|false or throws exception  
 
-Installation via composer  
+##Installation via composer  
         Add following code to your composer.json  
         
         "repositories": [
