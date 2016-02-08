@@ -18,7 +18,6 @@ class HttpRequest extends Request
         parent::__construct();
         $route = empty($_GET['route']) ? '' : $_GET['route'];
         $route = explode('/', $route);
-
         if (count($route) < 2) {
             throw new Exception('Invalid route');
         }
@@ -29,7 +28,8 @@ class HttpRequest extends Request
 
     public function getData()
     {
-        return (array) rawurldecode(file_get_contents('php://input'));
+        parse_str(file_get_contents('php://input'), $data);
+        return $data ?: [];
     }
 
     public function getStorageName()
@@ -39,11 +39,13 @@ class HttpRequest extends Request
 
     public function getCommandName()
     {
-        $this->command;
+        return $this->command;
     }
 
     public function getCommandParams()
     {
-        // TODO: Implement getCommandParams() method.
+        $key = isset($_GET['key']) ? $_GET['key'] : 0;
+        $key = isset($_POST['key']) ? $_POST['key'] : $key;
+        return $key ? [$key, $this->getData()] : [$this->getData()];
     }
 }

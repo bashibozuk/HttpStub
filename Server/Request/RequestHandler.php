@@ -44,7 +44,7 @@ class RequestHandler
 
     protected static function doCommand(Request $request, AbsractStorage $storage, AbstractResponse $response)
     {
-        $result = call_user_func_array([$storage, $request->getCommandName()], $request->getCommandParams());
+        $result = $storage->command($request->getCommandName(), $request->getCommandParams());
         $response->setData($result);
     }
 
