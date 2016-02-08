@@ -80,10 +80,7 @@ Basic HTTP  - For non REST applications,
 
 Installation via composer  
         Add following code to your composer.json  
-        ```  
-        var s = "JavaScript syntax highlighting";
-        alert(s);
-        ```
+        
         ```  
         "repositories": [
              {
@@ -111,6 +108,6 @@ Installation via composer
              }
            }```  
 And run  
-           `composer install`  
+           ```composer install```  
 in the root folder of your directory  
            
