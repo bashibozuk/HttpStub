@@ -1,7 +1,7 @@
-Simple REST/HTTP server with simple key value json document based storage
+#Simple REST/HTTP server with simple key value json document based storage
 
-Supports 2 types of requests
-REST
+###Supports 2 types of requests
+##REST
     - The request must follow REST conventions;
     - requires virtual host;
     - request must be sent to
@@ -40,7 +40,7 @@ REST
            EXECUTES - AbstractStorage::command('delete', [1]) 
            DESCRIPTION - deletes the entry at key 1 ,returns true|false or throws exception
        
-Basic HTTP  - For non REST applications, 
+##Basic HTTP  - For non REST applications, 
     - params are sent in HTTP format in the url or in the request body
     - storage , operation and key are passed as parameters in the url
     - data is sent as request body in http format i.e. param1=value1&param2=value2
