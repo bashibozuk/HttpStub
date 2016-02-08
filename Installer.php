@@ -11,13 +11,13 @@ namespace HttpStub;
 
 class Installer
 {
-    public static function postInstall()
+    public static function postInstall($event)
     {
-        var_dump(func_get_args());
+        var_dump($event->getComposer()->getPackage());
     }
 
     public static function postUpdate()
     {
-        var_dump(func_get_args());
+        var_dump('test');
     }
 }
