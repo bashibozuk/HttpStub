@@ -76,10 +76,10 @@ Basic HTTP  - For non REST applications,
            URL - http://localhost/test?route=test/delete&key=1
            REQUEST BODY -NULL
            EXECUTES - AbstractStorage::command('delete', [1]) 
-           DESCRIPTION - deletes the entry at key 1 ,returns true|false or throws exception
+           DESCRIPTION - deletes the entry at key 1 ,returns true|false or throws exception  
 
-Installation via composer
-        Add following code to your composer.json
+Installation via composer  
+        Add following code to your composer.json  
         ```javascript
         "repositories": [
              {
@@ -105,8 +105,8 @@ Installation via composer
              "HttpStub": {
                "data-root": ".data"
              }
-           }```
-And run
-           `composer install`
-in the root folder of your directory
+           }```  
+And run  
+           `composer install`  
+in the root folder of your directory  
            
