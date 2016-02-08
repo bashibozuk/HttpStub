@@ -5,7 +5,7 @@ REST
     - The request must follow REST conventions;
     - requires virtual host;
     - request must be sent to
-       http://<domain name|ip address>/<storage>/[<key>]
+       http://&lt;domain name|ip address &gt;/&lt;storage&gt;/[&lt;key&gt]
 
        i.e GET request executes read command is called if
        
