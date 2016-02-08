@@ -106,7 +106,7 @@ Installation via composer
                "data-root": ".data"
              }
            }```
-         And run
+And run
            `composer install`
-         in the root folder of your directory
+in the root folder of your directory
            
