@@ -77,3 +77,35 @@ Basic HTTP  - For non REST applications,
            REQUEST BODY -NULL
            EXECUTES - AbstractStorage::command('delete', [1]) 
            DESCRIPTION - deletes the entry at key 1 ,returns true|false or throws exception
+
+Installation via composer
+        Add following code to your composer.json
+        `"repositories": [
+             {
+               "type": "vcs",
+               "url" : "https://github.com/bashibozuk/HttpStub"
+             }
+           ],
+           "require": {
+             "bashibozuk/httpstub":"master"
+           },
+           "autoload": {
+             "psr-4": { "HttpStub\\" : "bashibozuk/httpstub"}
+           },
+           "scripts": {
+             "post-install-cmd" : [
+               "HttpStub\\Installer::postInstall"
+             ],
+             "post-update-cmd" : [
+               "HttpStub\\Installer::postInstall"
+             ]
+           },
+           "extra": {
+             "HttpStub": {
+               "data-root": ".data"
+             }
+           }`
+         And run
+           `composer install`
+         in the root folder of your directory
+           
