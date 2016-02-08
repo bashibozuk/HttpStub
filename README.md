@@ -80,6 +80,7 @@ Basic HTTP  - For non REST applications,
 
 Installation via composer
         Add following code to your composer.json
+        ```javascript
         "repositories": [
              {
                "type": "vcs",
@@ -104,7 +105,7 @@ Installation via composer
              "HttpStub": {
                "data-root": ".data"
              }
-           }
+           }```
          And run
            `composer install`
          in the root folder of your directory
