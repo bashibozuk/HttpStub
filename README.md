@@ -81,6 +81,10 @@ Basic HTTP  - For non REST applications,
 Installation via composer  
         Add following code to your composer.json  
         ```javascript
+        var s = "JavaScript syntax highlighting";
+        alert(s);
+        ```
+        ```javascript
         "repositories": [
              {
                "type": "vcs",
