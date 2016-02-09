@@ -1,9 +1,11 @@
 HTTP
+``
     - readAll   curl -G -d 'route=test/readAll' -v http://http-stub.local
     - read      curl -G -d 'route=test/read&key=1' -v http://http-stub.local
     - insert    curl  -d 'name=John Doe' -v 'http://http-stub.local/?route=test/insert'
     - update    curl  -d 'name=Jane Doe' -v 'http://http-stub.local/?route=test/update&key=1'
     - delete    curl -G -d 'route=test/delete&key=1' -v http://http-stub.local
+``
     
 REST
     - readAll   curl -G -v http://http-stub.local/test
