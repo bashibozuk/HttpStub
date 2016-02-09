@@ -5,10 +5,8 @@
     - The request must follow REST conventions;
     - requires virtual host;
     - request must be sent to
-       http://&lt;domain name|ip address &gt;/&lt;storage&gt;/[&lt;key&gt;]
+       http://<domain name|ip address >/<storage>/[<key>]
 
-       i.e GET request executes read command is called if
-       
        Supported calls :
            Method - GET
            URL - http://localhost/test/
