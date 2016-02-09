@@ -54,7 +54,7 @@ class RestRequest extends Request
     {
         $params = $this->getParams();
         $body = $this->getData();
-        if ($this->method == 'delete') {
+        if ($this->method == 'DELETE') {
             $body = isset($body['key']) ? $body['key'] : 0;
         }
 
